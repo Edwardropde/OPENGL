@@ -19,7 +19,7 @@ double lookatx=0, lookaty=15, lookatz=0;
 double headx=0, heady=1, headz=0;
 double fovy=120;
 double speed_turbine=1.5;
-//pitch variable
+// rotation around the y-axis variable
 ///double dx;
 //double dz;
 double dx2_dz2;
@@ -29,7 +29,7 @@ double roll_value = 0.2, pi = acos(-1), cs_angle=cos(pi/180), sn_angle=sin(pi/18
 GLfloat dx, dy, dz, dxyz;
 unsigned int ID;
 
-//yaw variabl
+// rotation about the z axis variablw
 double lookatx_tem;
 
 GLfloat alpha = 0.0, theta = 0.0, gama=0.0, axis_x=0.0, axis_y=0.0, axis_z=0, eyethetax=0, eyethetay=0, eyethetaz=0;
@@ -50,7 +50,7 @@ int animat = 0;
 const int dgre=3;
 int ncpt=L+1;
 int clikd=0;
-const int nt = 40;				//number of slices along x-direction
+const int nt = 40;				//number of slices on x-direction
 const int ntheta = 20;
 GLfloat ctrlpoints[L+1][3] =
 {
@@ -80,7 +80,7 @@ GLfloat ctrlpoints[L+1][3] =
 //light
 float spot_cut_off = 50;
 
-//variable for lighting
+// lighting variable
 
 bool light_switch_0=true;
 
@@ -356,11 +356,11 @@ void material_property(GLfloat R, GLfloat G, GLfloat B)
     glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
 }
 
-//base (mati)
+//base
 void base()
 {
     material_property(.23,.15,.12);
-    //base (mati)
+    //base
     glPushMatrix();
     glTranslatef(0,-.1,0);
     glScalef(300,.2,300);
@@ -381,7 +381,7 @@ void turbine()
     glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse);
     glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
     glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
-    //base (mati)
+    //base
 
     glPushMatrix();
     glTranslatef(0,.25,0);
@@ -398,7 +398,6 @@ void turbine()
     drawcube();
     glPopMatrix();
 
-    //pakha base
      // stick
     glPushMatrix();
     glTranslatef(0,10,0);
@@ -407,7 +406,6 @@ void turbine()
     drawcube();
     glPopMatrix();
 
-    //pakha
     glPushMatrix();
     glTranslatef(-.5,10,0);
     glRotatef( turbine_theta,1, 0, 0 );
@@ -594,9 +592,7 @@ void house()
     glPopMatrix();
 
     cala();
-
-
-
+    
     fench();
     glPushMatrix();
     glBegin(GL_POINT);
@@ -609,12 +605,9 @@ void house()
 
     window_door();
     glPopMatrix();
-
-
-
 }
 
-//bus design start here
+// beginning of bus design
 void wheel()
 {
     material_property(0,0,0);
@@ -751,7 +744,7 @@ void playground()
 void banner()
 {
 
-    //base (mati)
+    //base
     material_property(.75,.44,.17);
 
     glPushMatrix();
@@ -892,7 +885,6 @@ void bus_stopage()
     glTranslatef(-0.5,-0.5,-0.5);
     drawcube();
     glPopMatrix();
-    //cala
 
      material_property(1,1,1);
     glEnable(GL_TEXTURE_2D);
@@ -922,7 +914,6 @@ void cylinder_3D(GLdouble height,GLdouble rad ,GLdouble rad_2)
 }
 void tree1()
 {
-    //gacher pata
     material_property(0,.3,0);
     glPushMatrix();
     glTranslatef(0,8,0);
@@ -941,8 +932,6 @@ void tree1()
     glRotatef(-90,1,0,0);
     glutSolidCone(2,4,15,15);
     glPopMatrix();
-
-    //gacher kando
 
     material_property(.4,0.36,.31);
     //material_property(1,1,1);
@@ -1655,7 +1644,7 @@ void display(void)
         building2();
         glPopMatrix();
     glPopMatrix();
-    //building block 2 end
+    // building block 2 end
 
     sky();
 
@@ -1687,7 +1676,7 @@ void display(void)
 
     tree_around_pool();
 
-    //building block 3
+    // building block 3
     glPushMatrix();
     glTranslatef(2,0,-49);
     building3();
@@ -1895,14 +1884,14 @@ void myKeyboardFunc( unsigned char key, int x, int y )
     case 'i':
         eyerotatez= !eyerotatez;
         break;
-    //pitch 2 and 8
+    // Rotation around the y-axis for 2 and 8
     case '2':
         Pitch_y2();
         break;
     case '8':
         Pitch_y1();
         break;
-    // yaw 4 and 6
+    // Rotation around the z-axis for 4 and 6
     case '4':
         lookatx_tem=lookatx;
         lookatx=lookatx*cos(.03)+lookatz*sin(.03)-Eyex*cos(.03)-Eyez*sin(.03)+Eyex;
@@ -1915,7 +1904,7 @@ void myKeyboardFunc( unsigned char key, int x, int y )
         lookaty=lookaty;
         lookatz=lookatx_tem*sin(.04)+lookatz*cos(.04)-Eyex*sin(.04)-Eyez*cos(.04)+Eyez;
         break;
-    //Roll start 7 and 9
+    // Rotation around the x-axis for 7 and 9
     case '7':
         headx += 0.03;
         heady = sqrt(1 - headx*heady);
@@ -1934,7 +1923,7 @@ void myKeyboardFunc( unsigned char key, int x, int y )
     case 'l':
         speed_turbine-=0.1;
         break;
-    //birds eye view
+    // ariel eye view
     case 'b':
         lookatx = Eyex;
         lookaty = Eyey-10;
@@ -1945,7 +1934,7 @@ void myKeyboardFunc( unsigned char key, int x, int y )
     case '3':
         light_switch_0 =! light_switch_0;
         break;
-        //bus movement key
+        // key for bus movement
     case 'm':
         bus_switch=!bus_switch;
         break;
@@ -1956,7 +1945,7 @@ void myKeyboardFunc( unsigned char key, int x, int y )
         fovy-=2;
         break;
 
-    case 27:	// Escape key
+    case 27:	// Esc Key
         exit(1);
     }
     glutPostRedisplay();
@@ -2086,7 +2075,7 @@ void animate()
 
 
     light();
-    //bus();
+    // bus();
 
     glutPostRedisplay();
 
@@ -2118,11 +2107,11 @@ void LoadTexture(const char*filename, int rep = 1)
 
 void instruction()
 {
-    cout << "Welcome to my 3D City " << endl;
-    cout << "Designed by: Md. Jahid Hasan" << endl;
+    cout << "Welcome to the town " << endl;
+    cout << "Designed by: ..." << endl;
     //cout << "Roll: 1707085" << endl;
-    cout << "Department of Computer Science and Engineering "<<endl;
-    cout << "Khulna University of Engineering & Technology "<<endl;
+    cout << "Department of .... "<<endl;
+    cout << "Institution "<<endl;
     cout << "Press 'Esc' or 'q' to terminate the project \n" << endl;
 
     cout<<"------------------Camera control---------------------"<<endl;
@@ -2175,7 +2164,7 @@ void call_all_texture()
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building9.bmp",6);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick2.bmp",7);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\roof.bmp",8);
-    //LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus_top.bmp",9);
+    /* LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus_top.bmp",9); */
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building10.bmp",9);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sky.bmp",10);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick.bmp",11);
