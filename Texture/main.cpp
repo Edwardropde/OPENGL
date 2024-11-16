@@ -2156,26 +2156,26 @@ void instruction()
 
 void call_all_texture()
 {
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus10.bmp",1);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus10.bmp",2);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus7.bmp",1);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus7.bmp",2);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\road.bmp",3);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\grass4.bmp",4);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\signboard1.bmp",5);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building9.bmp",6);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick2.bmp",7);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\grass3.bmp",4);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\signboard4.bmp",5);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building8.bmp",6);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick3.bmp",7);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\roof.bmp",8);
     /* LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus_top.bmp",9); */
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building10.bmp",9);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building7.bmp",9);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sky.bmp",10);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick.bmp",11);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\grass1.bmp",12);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water3.bmp",13);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building4.bmp",14);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\wood1.bmp",15);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sun1.bmp",16);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick4.bmp",11);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\grass.bmp",12);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water1.bmp",13);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building5.bmp",14);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\wood3.bmp",15);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sun3.bmp",16);
      LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\leaf3.bmp",17);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\parking_lot.bmp",18);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water4.bmp",19);
+    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water2.bmp",19);
 }
 
 
