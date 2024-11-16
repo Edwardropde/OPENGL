@@ -2173,7 +2173,7 @@ void call_all_texture()
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building4.bmp",14);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\wood1.bmp",15);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sun1.bmp",16);
-     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\leaf6.bmp",17);
+     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\leaf3.bmp",17);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\parking_lot.bmp",18);
     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water4.bmp",19);
 }
