@@ -1050,7 +1050,7 @@ void tableBezier()
     r = xy[1];
     //rotate about z-axis
     float p1x,p1y,p1z,p2x,p2y,p2z;
-    for ( i = 0; i < nt; ++i )  			//step through x
+    for (i = 0; i < nt; ++i)  			//step through x
     {
         theta = 0;
         t+=dt;
@@ -1060,7 +1060,7 @@ void tableBezier()
 
         //draw the surface composed of quadrilaterals by sweeping theta
         glBegin( GL_QUAD_STRIP );
-        for ( j = 0; j <= ntheta; ++j )
+        for (j = 0; j <= ntheta; ++j)
         {
             theta += dtheta;
             double cosa = cos( theta );
@@ -1323,7 +1323,7 @@ void light_function_0(float x, float y, float z)
 
 void roadlight()
 {
-        for (int i=-20; i<=90; i=i+20)
+    for (int i=-20; i<=90; i=i+20)
     {
         glPushMatrix();
         light_function_0(125,20,-i);
@@ -1373,7 +1373,7 @@ void tree_around_pool()
 
     glPushMatrix();
     glTranslatef(-20,0,0);
-        for(int z=-25;z>-55;z-=8)
+    for(int z=-25;z>-55;z-=8)
     {
         glPushMatrix();
         glTranslatef(-30,0,z);
@@ -1517,7 +1517,7 @@ void park_with_tree()
 
     }
 
-        for (int i=10; i<=100; i+=20)
+    for (int i=10; i<=100; i+=20)
     {
         glPushMatrix();
         glTranslatef(i,-20,30);
