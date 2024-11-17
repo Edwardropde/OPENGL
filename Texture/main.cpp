@@ -12,47 +12,47 @@
 //GLUquadric *quad;
 using namespace std;
 
-double Txval=-1.5,Tyval=0,Tzval=-1.5;
-double windowHeight=750, windowWidth=1100;
-double Eyex=0, Eyey=15, Eyez=20, Eyex_tem, Eyey_tem, Eyez_tem;
-double lookatx=0, lookaty=15, lookatz=0;
-double headx=0, heady=1, headz=0;
-double fovy=120;
+double val_tx=-1.5,val_ty=0,val_tz=-1.5;
+double height_for_windows=750, width_for-windows=1100;
+double Eyex=0, Eyey=15, Eyez=20, temxeye, temyeye, temzeye;
+double atxlook=0, atylook=15, atzlook=0;
+double xheadd=0, yheadd=1, zheadd=0;
+double foovvyy=120;
 double speed_windmill=1.5;
 // rotation around the y-axis variable
 ///double dx;
 //double dz;
-double dx2_dz2;
-double pitch_theta=.004;
-double lookaty_tem, lookatz_tem;
-double roll_value = 0.2, pi = acos(-1), cs_angle=cos(pi/180), sn_angle=sin(pi/180);
+double dxdz22;
+double theta_pitch=.004;
+double atylook_tem, atzlook_tem;
+double value_roll = 0.2, pi = acos(-1), angle_cs=cos(pi/180), angle_sn=sin(pi/180);
 GLfloat dx, dy, dz, dxyz;
 unsigned int ID;
 
 // rotation about the z axis variablw
-double lookatx_tem;
+double atxlook_tem;
 
-GLfloat alpha = 0.0, theta = 0.0, gama=0.0, axis_x=0.0, axis_y=0.0, axis_z=0, eyethetax=0, eyethetay=0, eyethetaz=0;
+GLfloat alpha = 0.0, theta = 0.0, gama=0.0, x_axis=0.0, y_axis=0.0, z_axis=0, tax_the_eye=0, tay_the_eye=0, taz_the_eye=0;
 GLfloat windmill_theta=0;
-GLboolean xRotate = false, yRotate = false, zRotate = false, eyerotatex=false, eyerotatey=false, eyerotatez=false;
+GLboolean rotate_x = false, rotate_y = false, rotate_z = false, rotate_eye_x=false, rotate_eye_y=false, rotate_eye_z=false;
 GLboolean windmill_rotate = true;
 
-double bus_switch=true;
-double busx=-10, busy, busz=7;
+double switch_bus=true;
+double x_bus=-10, y_bus, z_bus=7;
 
 const int L=20;
-int anglex= 0, angley = 0, anglez = 0;          //rotation angles
+int x_angle= 0, y_angle = 0, z_angle = 0;          //rotation angles
 int window;
 int wired=0;
-int shcpt=1;
-int animat = 0;
+int spt=1;
+int anim = 0;
 //const int L=20;
-const int dgre=3;
-int ncpt=L+1;
-int clikd=0;
+const int degree=3;
+int ncptt=L+1;
+int clicked=0;
 const int nt = 40;				//number of slices on x-direction
-const int ntheta = 20;
-GLfloat ctrlpoints[L+1][3] =
+const int nostthet = 20;
+GLfloat controlpoints[L+1][3] =
 {
 {7.625,5.4,0},
 {7.325,4.775,0},
@@ -78,18 +78,18 @@ GLfloat ctrlpoints[L+1][3] =
 };
 
 //light
-float spot_cut_off = 50;
+float cutoff_spot = 50;
 
 // lighting variable
 
-bool light_switch_0=true;
+bool switch_light=true;
 
-GLboolean left_light_on = true;
-GLboolean spot_light_on = false;
+GLboolean on_left_light = true;
+GLboolean on_spot_light = false;
 
-GLboolean ambient_light_state = false;
-GLboolean specular_light_state = true;
-GLboolean diffuse_light_state = false;
+GLboolean state_light_ambient = false;
+GLboolean state_light_specular = true;
+GLboolean state_light_diffuse = false;
 
 const GLfloat ambient[] = {0.5, 1, 0.5, 1.0};
 const GLfloat black[] = {0.0, 0.0, 0.0, 1.0};
@@ -104,7 +104,7 @@ const GLfloat yellow[] = {1.0, 1.0, 0.0, 1.0};
 const GLfloat maroon[] = {0.8, 0.0, 0.0, 1.0};
 const GLfloat woodColor[] = {0.56, 0.3, 0.2, 1.0};
 
-static GLfloat v_pyramid[5][3] =
+static GLfloat pyramid_vecval[5][3] =
 {
     {0.0, 0.0, 0.0},
     {0.0, 0.0, 1.0},
@@ -112,7 +112,7 @@ static GLfloat v_pyramid[5][3] =
     {1.0, 0.0, 0.0},
     {0.5, 0.5, 0.5}
 };
-static GLfloat v_cube[8][3]=
+static GLfloat cube_vecval[8][3]=
 {
     {0,0,0},
     {0,0,1},
@@ -126,7 +126,7 @@ static GLfloat v_cube[8][3]=
 
 };
 
-static GLubyte p_Indices[4][3] =
+static GLubyte pote_indic[4][3] =
 {
     {4, 1, 2},
     {4, 2, 3},
@@ -135,12 +135,12 @@ static GLubyte p_Indices[4][3] =
 };
 
 
-static GLubyte quadIndices[1][4] =
+static GLubyte guad_indic[1][4] =
 {
     {0, 3, 2, 1}
 };
 
-static GLbyte q_Indices[6][4]=
+static GLbyte grid_indic[6][4]=
 {
     {3,1,5,7},
     {2,0,1,3},
@@ -150,7 +150,7 @@ static GLbyte q_Indices[6][4]=
     {6,4,0,2},
 };
 
-static GLfloat colors[6][3] =
+static GLfloat coloring[6][3] =
 {
     {0.0, 0.0, 1.0},
     {0.5, 0.0, 1.0},
@@ -186,28 +186,28 @@ void draw_pyramid()
 
     for (GLint i = 0; i <4; i++)
     {
-        //glColor3f(colors[i][0],colors[i][1],colors[i][2]);
-        ret_3p_normal(v_pyramid[p_Indices[i][0]][0], v_pyramid[p_Indices[i][0]][1], v_pyramid[p_Indices[i][0]][2],
-                    v_pyramid[p_Indices[i][1]][0], v_pyramid[p_Indices[i][1]][1], v_pyramid[p_Indices[i][1]][2],
-                    v_pyramid[p_Indices[i][2]][0], v_pyramid[p_Indices[i][2]][1], v_pyramid[p_Indices[i][2]][2]);
+        //glColor3f(coloring[i][0],coloring[i][1],coloring[i][2]);
+        ret_3p_normal(pyramid_vecval[pote_indic[i][0]][0], pyramid_vecval[pote_indic[i][0]][1], pyramid_vecval[pote_indic[i][0]][2],
+                    pyramid_vecval[pote_indic[i][1]][0], pyramid_vecval[pote_indic[i][1]][1], pyramid_vecval[pote_indic[i][1]][2],
+                    pyramid_vecval[pote_indic[i][2]][0], pyramid_vecval[pote_indic[i][2]][1], pyramid_vecval[pote_indic[i][2]][2]);
 
-        glVertex3fv(&v_pyramid[p_Indices[i][0]][0]);
-        glVertex3fv(&v_pyramid[p_Indices[i][1]][0]);
-        glVertex3fv(&v_pyramid[p_Indices[i][2]][0]);
+        glVertex3fv(&pyramid_vecval[pote_indic[i][0]][0]);
+        glVertex3fv(&pyramid_vecval[pote_indic[i][1]][0]);
+        glVertex3fv(&pyramid_vecval[pote_indic[i][2]][0]);
     }
     glEnd();
 
     glBegin(GL_QUADS);
     for (GLint i = 0; i <1; i++)
     {
-       // glColor3f(colors[4][0],colors[4][1],colors[4][2]);
-       ret_3p_normal(v_pyramid[quadIndices[i][0]][0], v_pyramid[quadIndices[i][0]][1], v_pyramid[quadIndices[i][0]][2],
-                    v_pyramid[quadIndices[i][1]][0], v_pyramid[quadIndices[i][1]][1], v_pyramid[quadIndices[i][1]][2],
-                    v_pyramid[quadIndices[i][2]][0], v_pyramid[quadIndices[i][2]][1], v_pyramid[quadIndices[i][2]][2]);
-        glVertex3fv(&v_pyramid[quadIndices[i][0]][0]);
-        glVertex3fv(&v_pyramid[quadIndices[i][1]][0]);
-        glVertex3fv(&v_pyramid[quadIndices[i][2]][0]);
-        glVertex3fv(&v_pyramid[quadIndices[i][3]][0]);
+       // glColor3f(coloring[4][0],coloring[4][1],coloring[4][2]);
+       ret_3p_normal(pyramid_vecval[guad_indic[i][0]][0], pyramid_vecval[guad_indic[i][0]][1], pyramid_vecval[guad_indic[i][0]][2],
+                    pyramid_vecval[guad_indic[i][1]][0], pyramid_vecval[guad_indic[i][1]][1], pyramid_vecval[guad_indic[i][1]][2],
+                    pyramid_vecval[guad_indic[i][2]][0], pyramid_vecval[guad_indic[i][2]][1], pyramid_vecval[guad_indic[i][2]][2]);
+        glVertex3fv(&pyramid_vecval[guad_indic[i][0]][0]);
+        glVertex3fv(&pyramid_vecval[guad_indic[i][1]][0]);
+        glVertex3fv(&pyramid_vecval[guad_indic[i][2]][0]);
+        glVertex3fv(&pyramid_vecval[guad_indic[i][3]][0]);
     }
     glEnd();
 
@@ -240,7 +240,7 @@ void light()
     //left light
     glEnable(GL_LIGHT0);
 
-    if (left_light_on)
+    if (on_left_light)
     {
         glLightfv(GL_LIGHT0, GL_AMBIENT, white);
         glLightfv(GL_LIGHT0, GL_DIFFUSE, white);
@@ -250,19 +250,19 @@ void light()
     else
     {
         //ambient, diffuse,specular
-        if (ambient_light_state)
+        if (state_light_ambient)
         {
             glLightfv(GL_LIGHT0, GL_AMBIENT, left_light_ambient);
             glLightfv(GL_LIGHT0, GL_DIFFUSE, no_light);
             glLightfv(GL_LIGHT0, GL_SPECULAR, no_light);
         }
-        else if (specular_light_state)
+        else if (state_light_specular)
         {
             glLightfv(GL_LIGHT0, GL_SPECULAR, left_light_specular);
             glLightfv(GL_LIGHT0, GL_AMBIENT, no_light);
             glLightfv(GL_LIGHT0, GL_DIFFUSE, no_light);
         }
-        else if (diffuse_light_state)
+        else if (state_light_diffuse)
         {
             glLightfv(GL_LIGHT0, GL_DIFFUSE, left_light_diffuse);
             glLightfv(GL_LIGHT0, GL_SPECULAR, no_light);
@@ -280,7 +280,7 @@ void light()
     //spot light
     glEnable(GL_LIGHT1);
     GLfloat spot_direction[] = {0, -1, 0, 1};
-    if (spot_light_on)
+    if (on_spot_light)
     {
         glLightfv(GL_LIGHT1, GL_AMBIENT, spot_light_ambient);
         glLightfv(GL_LIGHT1, GL_DIFFUSE, spot_light_diffuse);
@@ -288,7 +288,7 @@ void light()
         glLightfv(GL_LIGHT1, GL_POSITION, spot_light_position);
 
         glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, spot_direction);
-        glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, spot_cut_off);
+        glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, cutoff_spot);
     }
     else
     {
@@ -312,17 +312,17 @@ void cube_draw()
     glBegin(GL_QUADS);
     for (GLint i = 0; i <6; i++)
     {
-        //glColor3f(colors[i][0],colors[i][1],colors[i][2]);
-        ret_3p_normal(v_cube[quadIndices[i][0]][0], v_cube[quadIndices[i][0]][1], v_cube[quadIndices[i][0]][2],
-                    v_cube[quadIndices[i][1]][0], v_cube[quadIndices[i][1]][1], v_cube[quadIndices[i][1]][2],
-                    v_cube[quadIndices[i][2]][0], v_cube[quadIndices[i][2]][1], v_cube[quadIndices[i][2]][2]);
-        glVertex3fv(&v_cube[q_Indices[i][0]][0]);
+        //glColor3f(coloring[i][0],coloring[i][1],coloring[i][2]);
+        ret_3p_normal(cube_vecval[guad_indic[i][0]][0], cube_vecval[guad_indic[i][0]][1], cube_vecval[guad_indic[i][0]][2],
+                    cube_vecval[guad_indic[i][1]][0], cube_vecval[guad_indic[i][1]][1], cube_vecval[guad_indic[i][1]][2],
+                    cube_vecval[guad_indic[i][2]][0], cube_vecval[guad_indic[i][2]][1], cube_vecval[guad_indic[i][2]][2]);
+        glVertex3fv(&cube_vecval[grid_indic[i][0]][0]);
         glTexCoord2f(1,0);
-        glVertex3fv(&v_cube[q_Indices[i][1]][0]);
+        glVertex3fv(&cube_vecval[grid_indic[i][1]][0]);
         glTexCoord2f(0,0);
-        glVertex3fv(&v_cube[q_Indices[i][2]][0]);
+        glVertex3fv(&cube_vecval[grid_indic[i][2]][0]);
          glTexCoord2f(0,1);
-        glVertex3fv(&v_cube[q_Indices[i][3]][0]);
+        glVertex3fv(&cube_vecval[grid_indic[i][3]][0]);
 
         glTexCoord2f(1,1);
     }
@@ -336,10 +336,10 @@ void square()
 
     glBegin(GL_QUADS);
     //glColor3f(0,0,1);
-    glVertex3fv(&v_cube[q_Indices[1][0]][0]);
-    glVertex3fv(&v_cube[q_Indices[1][1]][0]);
-    glVertex3fv(&v_cube[q_Indices[1][2]][0]);
-    glVertex3fv(&v_cube[q_Indices[1][3]][0]);
+    glVertex3fv(&cube_vecval[grid_indic[1][0]][0]);
+    glVertex3fv(&cube_vecval[grid_indic[1][1]][0]);
+    glVertex3fv(&cube_vecval[grid_indic[1][2]][0]);
+    glVertex3fv(&cube_vecval[grid_indic[1][3]][0]);
     glEnd();
 }
 void property_material(GLfloat R, GLfloat G, GLfloat B)
@@ -585,7 +585,7 @@ void house()
     glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
 
 
-    glTranslatef(Txval, Tyval,Tzval);
+    glTranslatef(val_tx, val_ty,val_tz);
     glPushMatrix();
     glScalef(3,3,3);
     cube_draw();
@@ -1021,8 +1021,8 @@ void bezier_curve ( double t,  float xy[2])
         double oneMinusTpow=pow(1-t,double(L-i));
         double tPow=pow(t,double(i));
         double coef=oneMinusTpow*tPow*ncr;
-        x+=coef*ctrlpoints[i][0];
-        y+=coef*ctrlpoints[i][1];
+        x+=coef*controlpoints[i][0];
+        y+=coef*controlpoints[i][1];
 
     }
     xy[0] = float(x);
@@ -1037,10 +1037,10 @@ void table_bez()
     float x1, y1, z1, r1;			//next coordinates
     float theta;
 
-    const float startx = 0, endx = ctrlpoints[L][0];
+    const float startx = 0, endx = controlpoints[L][0];
     //number of angular slices
     const float dx = (endx - startx) / nt;	//x step size
-    const float dtheta = 2*3.1416 / ntheta;		//angular step size
+    const float dtheta = 2*3.1416 / nostthet;		//angular step size
 
     float t=0;
     float dt=1.0/nt;
@@ -1060,7 +1060,7 @@ void table_bez()
 
         //draw the surface composed of quadrilaterals by sweeping theta
         glBegin( GL_QUAD_STRIP );
-        for (j = 0; j <= ntheta; ++j)
+        for (j = 0; j <= nostthet; ++j)
         {
             theta += dtheta;
             double cosa = cos( theta );
@@ -1297,7 +1297,7 @@ void the_light_function(float x, float y, float z)
     GLfloat spot_direction[] = { 0.0, -1.0, 0.0 };
 
     glEnable( GL_LIGHT0);
-    if (light_switch_0)
+    if (switch_light)
     {
         glLightfv( GL_LIGHT0, GL_AMBIENT, light_ambient);
         glLightfv( GL_LIGHT0, GL_DIFFUSE, light_diffuse);
@@ -1410,14 +1410,14 @@ void tree_pool_area()
 
 void animation_for_bus()
 {
-    if(busx<=70)
+    if(x_bus<=70)
     {
 
-        busx +=0.2;
+        x_bus +=0.2;
     }
-    if(busx>=70)
+    if(x_bus>=70)
     {
-        busx = -70;
+        x_bus = -70;
 
     }
 
@@ -1428,10 +1428,10 @@ void movement_bus()
 {
         glEnable(GL_TEXTURE_2D);
         glPushMatrix();
-        glTranslatef(busx,-2.8,7);
+        glTranslatef(x_bus,-2.8,7);
         glScalef(2,2,1);
         bus();
-        if (bus_switch)
+        if (switch_bus)
         {
 
             animation_for_bus();
@@ -1560,18 +1560,18 @@ void display(void)
     glLoadIdentity();
     int ftm=8;
     //glFrustum(-ftm, ftm, -ftm, ftm, 3, 300);
-    gluPerspective(fovy,1,3,400);
+    gluPerspective(foovvyy,1,3,400);
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity();
-    gluLookAt(Eyex,Eyey,Eyez, lookatx,lookaty, lookatz, headx, heady, headz);
-    glViewport(0, 0, windowWidth, windowHeight);
-    glRotatef( alpha,axis_x, axis_y, axis_z );
-    glRotatef( theta, axis_x, axis_y, axis_z );
-    glRotatef(gama, axis_x, axis_y, axis_z);
+    gluLookAt(Eyex,Eyey,Eyez, atxlook,atylook, atzlook, xheadd, yheadd, zheadd);
+    glViewport(0, 0, width_for-windows, height_for_windows);
+    glRotatef( alpha,x_axis, y_axis, z_axis );
+    glRotatef( theta, x_axis, y_axis, z_axis );
+    glRotatef(gama, x_axis, y_axis, z_axis);
 
     glEnable(GL_TEXTURE_2D);
     glPushMatrix();
-    glTranslatef(busx,-1,7);
+    glTranslatef(x_bus,-1,7);
     glScalef(2,2,1);
     //bus();
     glPopMatrix();
@@ -1765,27 +1765,27 @@ void display(void)
 void y1_pitch(){
     GLfloat ty, tz;
 
-    ty = lookaty - Eyey;
-    tz = lookatz - Eyez;
+    ty = atylook - Eyey;
+    tz = atzlook - Eyez;
 
-    dy = ty*cs_angle-tz*sn_angle;
-    dz = ty*sn_angle+tz*cs_angle;
+    dy = ty*angle_cs-tz*angle_sn;
+    dz = ty*angle_sn+tz*angle_cs;
 
-    lookaty = dy + Eyey;
-    lookatz = dz + Eyez;
+    atylook = dy + Eyey;
+    atzlook = dz + Eyez;
 
 }
 void y2_pitch(){
     GLfloat ty, tz;
 
-    ty = lookaty - Eyey;
-    tz = lookatz - Eyez;
+    ty = atylook - Eyey;
+    tz = atzlook - Eyez;
 
-    dy = ty*cs_angle+tz*sn_angle;
-    dz = -ty*sn_angle+tz*cs_angle;
+    dy = ty*angle_cs+tz*angle_sn;
+    dz = -ty*angle_sn+tz*angle_cs;
 
-    lookaty = dy + Eyey;
-    lookatz = dz + Eyez;
+    atylook = dy + Eyey;
+    atzlook = dz + Eyez;
 
 }
 
@@ -1795,94 +1795,94 @@ void keyboard_func( unsigned char key, int x, int y )
     {
 
     case '0':
-        left_light_on = !left_light_on;
-        ambient_light_state = false;
-        specular_light_state = false;
-        diffuse_light_state = false;
+        on_left_light = !on_left_light;
+        state_light_ambient = false;
+        state_light_specular = false;
+        state_light_diffuse = false;
         break;
     case '1':
-        spot_light_on = !spot_light_on;
+        on_spot_light = !on_spot_light;
         break;
     case 'p':
-        spot_cut_off = spot_cut_off + 10;
+        cutoff_spot = cutoff_spot + 10;
         break;
     case 'n':
-        spot_cut_off = spot_cut_off - 10;
+        cutoff_spot = cutoff_spot - 10;
         break;
     case 'a':
-        ambient_light_state = !ambient_light_state;
+        state_light_ambient = !state_light_ambient;
         break;
     case 's':
-        specular_light_state = !specular_light_state;
+        state_light_specular = !state_light_specular;
         break;
     case 'd':
-        diffuse_light_state = !diffuse_light_state;
+        state_light_diffuse = !state_light_diffuse;
         break;
 
     case 'x':
     case 'X':
-        xRotate = !xRotate;
-        yRotate = false;
-        zRotate = false;
-        axis_x=1.0;
-        axis_y=0.0;
-        axis_z=0.0;
+        rotate_x = !rotate_x;
+        rotate_y = false;
+        rotate_z = false;
+        x_axis=1.0;
+        y_axis=0.0;
+        z_axis=0.0;
         break;
 
     case 'y':
     case 'Y':
-        yRotate = !yRotate;
-        xRotate = false;
-        zRotate = false;
-        axis_x=0.0;
-        axis_y=1.0;
-        axis_z=0;
+        rotate_y = !rotate_y;
+        rotate_x = false;
+        rotate_z = false;
+        x_axis=0.0;
+        y_axis=1.0;
+        z_axis=0;
         break;
     case 'z':
     case 'Z':
-        zRotate = !zRotate;
-        xRotate = false;
-        yRotate = false;
-        axis_x=0.0;
-        axis_y=0.0;
-        axis_z=1;
+        rotate_z = !rotate_z;
+        rotate_x = false;
+        rotate_y = false;
+        x_axis=0.0;
+        y_axis=0.0;
+        z_axis=1;
         break;
 
     case '+':
         Eyey-=1;
-        lookaty-=1;
+        atylook-=1;
         break;
 
     case '-':
         Eyey+=1;
-        lookaty+=1;
+        atylook+=1;
         break;
     case 'q':
-        Txval+=1;
+        val_tx+=1;
         break;
     case 'A':
-        Txval-=1;
+        val_tx-=1;
         break;
     case 'w':
-        Tyval+=1;
+        val_ty+=1;
         break;
     case 'S':
-        Tyval-=1;
+        val_ty-=1;
         break;
     case 'e':
-        Tzval+=1;
+        val_tz+=1;
         break;
     case 'D':
-        Tzval-=1;
+        val_tz-=1;
         break;
     case 'r':
-        eyerotatex= !eyerotatex;
+        rotate_eye_x= !rotate_eye_x;
         break;
     case 'P':
-        eyerotatey= !eyerotatey;
+        rotate_eye_y= !rotate_eye_y;
         break;
     case 'i':
-        eyerotatez= !eyerotatez;
+        rotate_eye_z= !rotate_eye_z;
         break;
     // Rotation around the y-axis for 2 and 8
     case '2':
@@ -1893,25 +1893,25 @@ void keyboard_func( unsigned char key, int x, int y )
         break;
     // Rotation around the z-axis for 4 and 6
     case '4':
-        lookatx_tem=lookatx;
-        lookatx=lookatx*cos(.03)+lookatz*sin(.03)-Eyex*cos(.03)-Eyez*sin(.03)+Eyex;
-        lookaty=lookaty;
-        lookatz=-lookatx_tem*sin(.03)+lookatz*cos(.03)+Eyex*sin(.03)-Eyez*cos(.03)+Eyez;
+        atxlook_tem=atxlook;
+        atxlook=atxlook*cos(.03)+atzlook*sin(.03)-Eyex*cos(.03)-Eyez*sin(.03)+Eyex;
+        atylook=atylook;
+        atzlook=-atxlook_tem*sin(.03)+atzlook*cos(.03)+Eyex*sin(.03)-Eyez*cos(.03)+Eyez;
         break;
     case '6':
-        lookatx_tem=lookatx;
-        lookatx=lookatx*cos(.04)-lookatz*sin(.04)-Eyex*cos(.04)+Eyez*sin(.04)+Eyex;
-        lookaty=lookaty;
-        lookatz=lookatx_tem*sin(.04)+lookatz*cos(.04)-Eyex*sin(.04)-Eyez*cos(.04)+Eyez;
+        atxlook_tem=atxlook;
+        atxlook=atxlook*cos(.04)-atzlook*sin(.04)-Eyex*cos(.04)+Eyez*sin(.04)+Eyex;
+        atylook=atylook;
+        atzlook=atxlook_tem*sin(.04)+atzlook*cos(.04)-Eyex*sin(.04)-Eyez*cos(.04)+Eyez;
         break;
     // Rotation around the x-axis for 7 and 9
     case '7':
-        headx += 0.03;
-        heady = sqrt(1 - headx*heady);
+        xheadd += 0.03;
+        yheadd = sqrt(1 - xheadd*yheadd);
         break;
     case '9':
-        headx -= 0.03;
-        heady = sqrt(1 - headx*heady);
+        xheadd -= 0.03;
+        yheadd = sqrt(1 - xheadd*yheadd);
         break;
     case 't':
 
@@ -1925,24 +1925,24 @@ void keyboard_func( unsigned char key, int x, int y )
         break;
     // ariel eye view
     case 'b':
-        lookatx = Eyex;
-        lookaty = Eyey-10;
-        lookatz= Eyez-5;
-        //headz=1;
-        //heady=0;
+        atxlook = Eyex;
+        atylook = Eyey-10;
+        atzlook= Eyez-5;
+        //zheadd=1;
+        //yheadd=0;
         break;
     case '3':
-        light_switch_0 =! light_switch_0;
+        switch_light =! switch_light;
         break;
         // key for bus movement
     case 'm':
-        bus_switch=!bus_switch;
+        switch_bus=!switch_bus;
         break;
     case 'o':
-        fovy+=2;
+        foovvyy+=2;
         break;
     case '.':
-        fovy-=2;
+        foovvyy-=2;
         break;
 
     case 27:	// Esc Key
@@ -1956,54 +1956,54 @@ void key_special(int key, int x, int y)
     switch(key)
     {
     case GLUT_KEY_UP:
-        Eyex_tem = Eyex+ ((lookatx-Eyex)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)));
-        Eyez_tem = Eyez+ ((lookatz-Eyez)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)));
+        temxeye = Eyex+ ((atxlook-Eyex)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)));
+        temzeye = Eyez+ ((atzlook-Eyez)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)));
 
-        lookatx_tem=lookatx-Eyex;
-        lookatz_tem=lookatz-Eyez;
+        atxlook_tem=atxlook-Eyex;
+        atzlook_tem=atzlook-Eyez;
 
-        lookaty_tem=lookatx_tem;
-        lookatx_tem=lookatx_tem*((lookatx-Eyex)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)))+lookatz_tem*((lookatz-Eyez)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)))+1;
-        lookatz_tem=-lookaty_tem*((lookatz-Eyez)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)))+lookatz_tem*((lookatx-Eyex)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)));
+        atylook_tem=atxlook_tem;
+        atxlook_tem=atxlook_tem*((atxlook-Eyex)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)))+atzlook_tem*((atzlook-Eyez)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)))+1;
+        atzlook_tem=-atylook_tem*((atzlook-Eyez)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)))+atzlook_tem*((atxlook-Eyex)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)));
 
-        lookaty_tem=lookatx_tem;
-        lookatx_tem = lookatx_tem*((lookatx-Eyex)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)))-lookatz_tem*((lookatz-Eyez)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)));
-        lookatz_tem = lookaty_tem*((lookatz-Eyez)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)))+lookatz_tem*((lookatx-Eyex)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)));
+        atylook_tem=atxlook_tem;
+        atxlook_tem = atxlook_tem*((atxlook-Eyex)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)))-atzlook_tem*((atzlook-Eyez)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)));
+        atzlook_tem = atylook_tem*((atzlook-Eyez)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)))+atzlook_tem*((atxlook-Eyex)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)));
 
-        lookatz=Eyez+lookatz_tem;
-        lookatx=Eyex+lookatx_tem;
+        atzlook=Eyez+atzlook_tem;
+        atxlook=Eyex+atxlook_tem;
 
-        Eyex=Eyex_tem;
-        Eyez=Eyez_tem;
+        Eyex=temxeye;
+        Eyez=temzeye;
         break;
     case GLUT_KEY_DOWN:
-        Eyex_tem = Eyex- ((lookatx-Eyex)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)));
-        Eyez_tem = Eyez- ((lookatz-Eyez)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)));
+        temxeye = Eyex- ((atxlook-Eyex)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)));
+        temzeye = Eyez- ((atzlook-Eyez)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)));
 
-        lookatx_tem=lookatx-Eyex;
-        lookatz_tem=lookatz-Eyez;
+        atxlook_tem=atxlook-Eyex;
+        atzlook_tem=atzlook-Eyez;
 
-        lookaty_tem=lookatx_tem;
-        lookatx_tem=lookatx_tem*((lookatx-Eyex)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)))+lookatz_tem*((lookatz-Eyez)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)))-1;
-        lookatz_tem=-lookaty_tem*((lookatz-Eyez)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)))+lookatz_tem*((lookatx-Eyex)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)));
+        atylook_tem=atxlook_tem;
+        atxlook_tem=atxlook_tem*((atxlook-Eyex)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)))+atzlook_tem*((atzlook-Eyez)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)))-1;
+        atzlook_tem=-atylook_tem*((atzlook-Eyez)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)))+atzlook_tem*((atxlook-Eyex)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)));
 
-        lookaty_tem=lookatx_tem;
-        lookatx_tem = lookatx_tem*((lookatx-Eyex)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)))-lookatz_tem*((lookatz-Eyez)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)));
-        lookatz_tem = lookaty_tem*((lookatz-Eyez)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)))+lookatz_tem*((lookatx-Eyex)/sqrt(pow((lookatx-Eyex),2)+pow((lookatz-Eyez),2)));
+        atylook_tem=atxlook_tem;
+        atxlook_tem = atxlook_tem*((atxlook-Eyex)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)))-atzlook_tem*((atzlook-Eyez)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)));
+        atzlook_tem = atylook_tem*((atzlook-Eyez)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)))+atzlook_tem*((atxlook-Eyex)/sqrt(pow((atxlook-Eyex),2)+pow((atzlook-Eyez),2)));
 
-        lookatz=Eyez+lookatz_tem;
-        lookatx=Eyex+lookatx_tem;
+        atzlook=Eyez+atzlook_tem;
+        atxlook=Eyex+atxlook_tem;
 
-        Eyex=Eyex_tem;
-        Eyez=Eyez_tem;
+        Eyex=temxeye;
+        Eyez=temzeye;
         break;
     case GLUT_KEY_LEFT:
         Eyex-=1;
-        lookatx-=1;
+        atxlook-=1;
         break;
     case GLUT_KEY_RIGHT:
         Eyex+=1;
-        lookatx+=1;
+        atxlook+=1;
         break;
     }
 
@@ -2014,55 +2014,55 @@ void key_special(int key, int x, int y)
 
 void the_animation()
 {
-    if (xRotate == true)
+    if (rotate_x == true)
     {
         theta += 0.3;
         if(theta > 360.0)
             theta -= 360.0*floor(theta/360.0);
     }
 
-    if (yRotate == true)
+    if (rotate_y == true)
     {
         alpha += 0.3;
         if(alpha > 360.0)
             alpha -= 360.0*floor(alpha/360.0);
     }
-    if (zRotate == true)
+    if (rotate_z == true)
     {
         gama += 0.3;
         if(alpha > 360.0)
             gama -= 360.0*floor(gama/360.0);
     }
-    if(eyerotatex==true)
+    if(rotate_eye_x==true)
     {
 
-        eyethetax -= 0.0000002;
-        if(eyethetax > 360.0)
-            eyethetax -= 360.0*floor(eyethetax/360.0);
+        tax_the_eye -= 0.0000002;
+        if(tax_the_eye > 360.0)
+            tax_the_eye -= 360.0*floor(tax_the_eye/360.0);
         Eyex=Eyex;
-        Eyey=Eyey*cos(eyethetax)-Eyez*sin(eyethetax);
-        Eyez=Eyey*sin(eyethetax)+Eyez*cos(eyethetax);
+        Eyey=Eyey*cos(tax_the_eye)-Eyez*sin(tax_the_eye);
+        Eyez=Eyey*sin(tax_the_eye)+Eyez*cos(tax_the_eye);
 
     }
-    if(eyerotatey==true)
+    if(rotate_eye_y==true)
     {
 
-        eyethetay -= 0.0000002;
-        if(eyethetay > 360.0)
-            eyethetay -= 360.0*floor(eyethetay/360.0);
-        Eyex=Eyex*cos(eyethetay)+Eyez*sin(eyethetay);
+        tay_the_eye -= 0.0000002;
+        if(tay_the_eye > 360.0)
+            tay_the_eye -= 360.0*floor(tay_the_eye/360.0);
+        Eyex=Eyex*cos(tay_the_eye)+Eyez*sin(tay_the_eye);
         Eyey=Eyey;
-        Eyez=-Eyex*sin(eyethetay)+Eyez*cos(eyethetay);
+        Eyez=-Eyex*sin(tay_the_eye)+Eyez*cos(tay_the_eye);
 
     }
-    if(eyerotatez==true)
+    if(rotate_eye_z==true)
     {
 
-        eyethetaz -= 0.00000002;
-        if(eyethetaz > 360.0)
-            eyethetaz -= 360.0*floor(eyethetaz/360.0);
-        Eyex=Eyex*cos(eyethetaz)-Eyey*sin(eyethetaz);
-        Eyey=-Eyex*sin(eyethetaz)+Eyey*cos(eyethetaz);
+        taz_the_eye -= 0.00000002;
+        if(taz_the_eye > 360.0)
+            taz_the_eye -= 360.0*floor(taz_the_eye/360.0);
+        Eyex=Eyex*cos(taz_the_eye)-Eyey*sin(taz_the_eye);
+        Eyey=-Eyex*sin(taz_the_eye)+Eyey*cos(taz_the_eye);
         Eyez=Eyez;
     }
 
@@ -2185,7 +2185,7 @@ int main (int argc, char **argv)
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowPosition(400,50);
-    glutInitWindowSize(windowWidth, windowHeight);
+    glutInitWindowSize(width_for-windows, height_for_windows);
     glutCreateWindow("3D City view");
     glShadeModel( GL_SMOOTH );
     glEnable( GL_DEPTH_TEST );
