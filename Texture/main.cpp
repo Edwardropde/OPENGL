@@ -306,7 +306,7 @@ void light()
 }
 
 
-void drawcube()
+void cube_draw()
 {
     //glColor3f(1,0,0);
     glBegin(GL_QUADS);
@@ -365,7 +365,7 @@ void base()
     glTranslatef(0,-.1,0);
     glScalef(300,.2,300);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 }
 
@@ -387,7 +387,7 @@ void turbine()
     glTranslatef(0,.25,0);
     glScalef(1,.5,1);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     // stick
@@ -395,7 +395,7 @@ void turbine()
     glTranslatef(0,5,0);
     glScalef(.2,10,.2);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
      // stick
@@ -403,7 +403,7 @@ void turbine()
     glTranslatef(0,10,0);
     glScalef(1,.2,.2);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glPushMatrix();
@@ -412,13 +412,13 @@ void turbine()
         glPushMatrix();
         glScalef(.1,.3,4);
         glTranslatef(-.5,-.5,-.5);
-        drawcube();
+        cube_draw();
         glPopMatrix();
 
         glPushMatrix();
         glScalef(.1,4,.3);
         glTranslatef(-.5,-.5,-.5);
-        drawcube();
+        cube_draw();
         glPopMatrix();
     glPopMatrix();
 
@@ -458,13 +458,13 @@ void fench()
         glPushMatrix();
         glTranslatef(i,0,4);
         glScalef(.1,1,.1);
-        drawcube();
+        cube_draw();
         glPopMatrix();
 
         glPushMatrix();
         glTranslatef(i,0,-1);
         glScalef(.1,1,.1);
-        drawcube();
+        cube_draw();
         glPopMatrix();
     }
 
@@ -473,62 +473,62 @@ void fench()
         glPushMatrix();
         glTranslatef(-1,0,i);
         glScalef(.1,1,.1);
-        drawcube();
+        cube_draw();
         glPopMatrix();
 
         glPushMatrix();
         glTranslatef(4,0,i);
         glScalef(.1,1,.1);
-        drawcube();
+        cube_draw();
         glPopMatrix();
     }
     glPushMatrix();
     glTranslatef(-1,0.3,4);
     glScalef(5,0.1,0.1);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-1,.6,4);
     glScalef(5,.1,.1);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-1,.3,-1);
     glScalef(5,.1,.1);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-1,.6,-1);
     glScalef(5,.1,.1);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     //left right
     glPushMatrix();
     glTranslatef(-1,.3,-1);
     glScalef(.1,.1,5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-1,.6,-1);
     glScalef(.1,.1,5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(4,.3,-1);
     glScalef(.1,.1,5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(4,.6,-1);
     glScalef(.1,.1,5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
 }
@@ -588,7 +588,7 @@ void house()
     glTranslatef(Txval, Tyval,Tzval);
     glPushMatrix();
     glScalef(3,3,3);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     cala();
@@ -655,7 +655,7 @@ void bus()
     glTranslatef(0,3,0);
     glScalef(5,2.7,2);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     //bus front side
@@ -664,7 +664,7 @@ void bus()
     glTranslatef(-2.5,3,0);
     glScalef(.1,2.7,2);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);
@@ -676,7 +676,7 @@ void bus()
     glTranslatef(0,4.4,0);
     glScalef(5,.1,2);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);
@@ -694,7 +694,7 @@ void road()
     glTranslatef(0,0,7);
     glScalef(120,.2,2.5);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     //Road x axis -1
@@ -702,7 +702,7 @@ void road()
     glTranslatef(0,0,-23);
     glScalef(120,.2,2.5);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     //Road x axis -2
@@ -710,7 +710,7 @@ void road()
     glTranslatef(0,0,-53);
     glScalef(120,.2,2.5);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     //Road x axis +1
@@ -718,7 +718,7 @@ void road()
     glTranslatef(0,0,37);
     glScalef(120,.2,2.5);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);
@@ -735,7 +735,7 @@ void playground()
 
     glScaled(10,.2,10);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 
@@ -751,7 +751,7 @@ void banner()
     glTranslatef(0,.25,0);
     glScalef(1,.5,1);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     // stick
@@ -759,7 +759,7 @@ void banner()
     glTranslatef(0,2.5,0);
     glScalef(.2,5,.2);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     //banner
 
@@ -769,7 +769,7 @@ void banner()
     glTranslatef(0,6,0);
     glScalef(4,2.5,.1);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 
@@ -785,7 +785,7 @@ void building()
     glTranslatef(0,7,0);
     glScalef(5,.2,4);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     material_property(1,1,1);
@@ -795,7 +795,7 @@ void building()
     glTranslatef(0,3.5,0);
     glScalef(5,7,4);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 }
@@ -823,7 +823,7 @@ void building2()
     glTranslatef(0,30,0);
     glScalef(5,.2,4);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     material_property(1,1,1);
@@ -833,7 +833,7 @@ void building2()
     glTranslatef(0,15,0);
     glScalef(5,30,4);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 }
@@ -846,7 +846,7 @@ void building3()
     glTranslatef(0,25,0);
     glScalef(6,.2,5);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     material_property(1,1,1);
@@ -856,7 +856,7 @@ void building3()
     glTranslatef(0,12.5,0);
     glScalef(6,25,5);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 }
@@ -872,7 +872,7 @@ void bus_stopage()
     glTranslatef(2.5,0,0);
     glScalef(7,0.5,5);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     //stand
@@ -883,7 +883,7 @@ void bus_stopage()
     glTranslatef(2.5,3,-2.5);
     glScalef(7,8,.5);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
      material_property(1,1,1);
@@ -895,7 +895,7 @@ void bus_stopage()
     glTranslatef(0,3,0);
     glScalef(7,6,.5);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
 }
@@ -970,28 +970,28 @@ void sky()
     glTranslatef(0,200,-200);
     glScalef(500,500,100);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(200,200,0);
     glScalef(100,500,500);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-200,200,0);
     glScalef(100,500,500);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(0,200,200);
     glScalef(500,500,100);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);
@@ -1108,7 +1108,7 @@ void chair()
     glTranslatef(0,length/2,0);
     glScalef(length,width,length);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     // leg base 1
@@ -1116,28 +1116,28 @@ void chair()
     glTranslatef(length/2 -width/2,0,length/2-width/2);
     glScalef(width,length,width);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     // leg base 2
     glPushMatrix();
     glTranslatef(length/2 -width/2,0,- length/2 +width/2);
     glScalef(width,length,width);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     // leg base 3
     glPushMatrix();
     glTranslatef(-length/2 +width/2,0,+ length/2 -width/2);
     glScalef(width,length,width);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     // leg  base 4
     glPushMatrix();
     glTranslatef(-length/2 +width/2,0,- length/2 +width/2);
     glScalef(width,length,width);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     // upper  1
@@ -1145,14 +1145,14 @@ void chair()
     glTranslatef(length/2 -width/2,length,length/2-width/2);
     glScalef(width,length,width);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     // upper 2
     glPushMatrix();
     glTranslatef(-length/2 -width/2,length,length/2+width/2);
     glScalef(width,length,width);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     // upper close 1
@@ -1160,14 +1160,14 @@ void chair()
     glTranslatef(0,length,length/2);
     glScalef(length,length/6,0);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     // upper close 2
     glPushMatrix();
     glTranslatef(0,length+5,length/2);
     glScalef(length,length/6,0);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     // upper close 3
@@ -1175,7 +1175,7 @@ void chair()
     glTranslatef(0,length-5,length/2);
     glScalef(length,length/6,0);
     glTranslatef(-0.5,-0.5,-0.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
 
@@ -1237,7 +1237,7 @@ void tiles()
 
     glScaled(15,.2,15);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 }
@@ -1252,7 +1252,7 @@ void road_light()
     glScalef(1,30,1);
     glTranslatef(-0.5,-0.5,-0.5);
     material_property(0.8,0.6,0.2);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     // light stand
@@ -1261,7 +1261,7 @@ void road_light()
     glScalef(10,1,1);
     glTranslatef(-0.5,-0.5,-0.5);
     material_property(0.8,0.6,0.2);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     // Bulb line
@@ -1270,7 +1270,7 @@ void road_light()
     glScalef(1,7,1);
     glTranslatef(-0.5,-0.5,-0.5);
     material_property(0.9,0.9,0.9);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     // texture light glutsolidshere
@@ -1341,7 +1341,7 @@ void grass_block22()
     glPushMatrix();
     glScalef(30,1,30);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);
@@ -1354,7 +1354,7 @@ void swimming_pool_block21()
     glPushMatrix();
     glScalef(30,1,30);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);
@@ -1466,7 +1466,7 @@ void park()
     glScalef(2,30,2);
     glTranslatef(-0.5,-0.5,-0.5);
     material_property(.78,.46,.29);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 
@@ -1480,7 +1480,7 @@ void park()
     glScalef(8,12,8);
     glTranslatef(-0.5,-0.5,-0.5);
      material_property(1,1,1);
-    drawcube();
+    cube_draw();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 }
@@ -1536,7 +1536,7 @@ void parking_zone()
     glPushMatrix();
     glScalef(20,1,15);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);
@@ -1550,7 +1550,7 @@ void sea()
     glTranslatef(0,0,-120);
     glScalef(300,2,100);
     glTranslatef(-.5,-.5,-.5);
-    drawcube();
+    cube_draw();
     glPopMatrix();
 }
 void display(void)
