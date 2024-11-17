@@ -2156,26 +2156,26 @@ void instruction()
 
 void texture_call()
 {
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus7.bmp",1);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus7.bmp",2);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\road.bmp",3);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\grass3.bmp",4);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\signboard4.bmp",5);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building8.bmp",6);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick3.bmp",7);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\roof.bmp",8);
-    /* texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus_top.bmp",9); */
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building7.bmp",9);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sky.bmp",10);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick4.bmp",11);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\grass.bmp",12);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water1.bmp",13);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building5.bmp",14);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\wood3.bmp",15);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sun3.bmp",16);
-     texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\leaf3.bmp",17);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\parking_lot.bmp",18);
-    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water2.bmp",19);
+    texture_load("./Texture/images/bus7.bmp",1);
+    texture_load("./Texture/images/bus7.bmp",2);
+    texture_load("./Texture/images/road.bmp",3);
+    texture_load("./Texture/images/grass3.bmp",4);
+    texture_load("./Texture/images/signboard4.bmp",5);
+    texture_load("./Texture/images/building8.bmp",6);
+    texture_load("./Texture/images/brick3.bmp",7);
+    texture_load("./Texture/images/roof.bmp",8);
+    texture_load("./Texture/images/bus_top.bmp",9);
+    texture_load("./Texture/images/building7.bmp",9);
+    texture_load("./Texture/images/sky.bmp",10);
+    texture_load("./Texture/images/brick4.bmp",11);
+    texture_load("./Texture/images/grass.bmp",12);
+    texture_load("./Texture/images/water1.bmp",13);
+    texture_load("./Texture/images/building5.bmp",14);
+    texture_load("./Texture/images/wood3.bmp",15);
+    texture_load("./Texture/images/sun3.bmp",16);
+     texture_load("./Texture/images/leaf3.bmp",17);
+    texture_load("./Texture/images/parking_lot.bmp",18);
+    texture_load("./Texture/images/water2.bmp",19);
 }
 
 
