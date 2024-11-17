@@ -159,7 +159,7 @@ static GLfloat colors[6][3] =
     {0.5, 0.5, 0.0},
     {.2, 0.6, 0.6}
 };
-static void getNormal3p
+static void ret_3p_normal
 (GLfloat x1, GLfloat y1,GLfloat z1, GLfloat x2, GLfloat y2,GLfloat z2, GLfloat x3, GLfloat y3,GLfloat z3)
 {
     GLfloat Ux, Uy, Uz, Vx, Vy, Vz, Nx, Ny, Nz;
@@ -187,7 +187,7 @@ void drawpyramid()
     for (GLint i = 0; i <4; i++)
     {
         //glColor3f(colors[i][0],colors[i][1],colors[i][2]);
-        getNormal3p(v_pyramid[p_Indices[i][0]][0], v_pyramid[p_Indices[i][0]][1], v_pyramid[p_Indices[i][0]][2],
+        ret_3p_normal(v_pyramid[p_Indices[i][0]][0], v_pyramid[p_Indices[i][0]][1], v_pyramid[p_Indices[i][0]][2],
                     v_pyramid[p_Indices[i][1]][0], v_pyramid[p_Indices[i][1]][1], v_pyramid[p_Indices[i][1]][2],
                     v_pyramid[p_Indices[i][2]][0], v_pyramid[p_Indices[i][2]][1], v_pyramid[p_Indices[i][2]][2]);
 
@@ -201,7 +201,7 @@ void drawpyramid()
     for (GLint i = 0; i <1; i++)
     {
        // glColor3f(colors[4][0],colors[4][1],colors[4][2]);
-       getNormal3p(v_pyramid[quadIndices[i][0]][0], v_pyramid[quadIndices[i][0]][1], v_pyramid[quadIndices[i][0]][2],
+       ret_3p_normal(v_pyramid[quadIndices[i][0]][0], v_pyramid[quadIndices[i][0]][1], v_pyramid[quadIndices[i][0]][2],
                     v_pyramid[quadIndices[i][1]][0], v_pyramid[quadIndices[i][1]][1], v_pyramid[quadIndices[i][1]][2],
                     v_pyramid[quadIndices[i][2]][0], v_pyramid[quadIndices[i][2]][1], v_pyramid[quadIndices[i][2]][2]);
         glVertex3fv(&v_pyramid[quadIndices[i][0]][0]);
@@ -313,7 +313,7 @@ void cube_draw()
     for (GLint i = 0; i <6; i++)
     {
         //glColor3f(colors[i][0],colors[i][1],colors[i][2]);
-        getNormal3p(v_cube[quadIndices[i][0]][0], v_cube[quadIndices[i][0]][1], v_cube[quadIndices[i][0]][2],
+        ret_3p_normal(v_cube[quadIndices[i][0]][0], v_cube[quadIndices[i][0]][1], v_cube[quadIndices[i][0]][2],
                     v_cube[quadIndices[i][1]][0], v_cube[quadIndices[i][1]][1], v_cube[quadIndices[i][1]][2],
                     v_cube[quadIndices[i][2]][0], v_cube[quadIndices[i][2]][1], v_cube[quadIndices[i][2]][2]);
         glVertex3fv(&v_cube[q_Indices[i][0]][0]);
@@ -1075,7 +1075,7 @@ void tableBezier()
 
             if(j>0)
             {
-                getNormal3p(p1x,p1y,p1z,p2x,p2y,p2z,x, y, z);
+                ret_3p_normal(p1x,p1y,p1z,p2x,p2y,p2z,x, y, z);
             }
             else
             {
