@@ -18,7 +18,7 @@ double Eyex=0, Eyey=15, Eyez=20, Eyex_tem, Eyey_tem, Eyez_tem;
 double lookatx=0, lookaty=15, lookatz=0;
 double headx=0, heady=1, headz=0;
 double fovy=120;
-double speed_turbine=1.5;
+double speed_windmill=1.5;
 // rotation around the y-axis variable
 ///double dx;
 //double dz;
@@ -33,9 +33,9 @@ unsigned int ID;
 double lookatx_tem;
 
 GLfloat alpha = 0.0, theta = 0.0, gama=0.0, axis_x=0.0, axis_y=0.0, axis_z=0, eyethetax=0, eyethetay=0, eyethetaz=0;
-GLfloat turbine_theta=0;
+GLfloat windmill_theta=0;
 GLboolean xRotate = false, yRotate = false, zRotate = false, eyerotatex=false, eyerotatey=false, eyerotatez=false;
-GLboolean turbine_rotate = true;
+GLboolean windmill_rotate = true;
 
 double bus_switch=true;
 double busx=-10, busy, busz=7;
@@ -178,7 +178,7 @@ static void ret_3p_normal
 
     glNormal3f(Nx,Ny,Nz);
 }
-void drawpyramid()
+void draw_pyramid()
 {
 
     //glColor3f(1,0,0);
@@ -342,7 +342,7 @@ void square()
     glVertex3fv(&v_cube[q_Indices[1][3]][0]);
     glEnd();
 }
-void material_property(GLfloat R, GLfloat G, GLfloat B)
+void property_material(GLfloat R, GLfloat G, GLfloat B)
 {
     GLfloat no_mat[] = { 1, 1, 1, 1.0 };
     GLfloat mat_ambient[] = { R, G, B, 1.0 };
@@ -359,7 +359,7 @@ void material_property(GLfloat R, GLfloat G, GLfloat B)
 //base
 void base()
 {
-    material_property(.23,.15,.12);
+    property_material(.23,.15,.12);
     //base
     glPushMatrix();
     glTranslatef(0,-.1,0);
@@ -369,7 +369,7 @@ void base()
     glPopMatrix();
 }
 
-void turbine()
+void windmill()
 {
     GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat mat_ambient[] = { 0.93, 0.91, 0.86, 1.0 };
@@ -408,7 +408,7 @@ void turbine()
 
     glPushMatrix();
     glTranslatef(-.5,10,0);
-    glRotatef( turbine_theta,1, 0, 0 );
+    glRotatef( windmill_theta,1, 0, 0 );
         glPushMatrix();
         glScalef(.1,.3,4);
         glTranslatef(-.5,-.5,-.5);
@@ -425,7 +425,7 @@ void turbine()
 
 }
 
-void cala()
+void c_a_l_a()
 {
     GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat mat_ambient[] = { 0.91, .52, 0.42, 1.0 };
@@ -441,16 +441,16 @@ void cala()
     glPushMatrix();
     glTranslatef(-.5,3,-.5);
     glScalef(4,4,4);
-    drawpyramid();
+    draw_pyramid();
     glPopMatrix();
 }
 
 
-void fench()
+void f_e_n_c_h()
 {
 
 
-    material_property(.44,.33,.22);
+    property_material(.44,.33,.22);
 
 
     for(GLfloat i=-1;i<=4;i+=.5)
@@ -532,9 +532,9 @@ void fench()
     glPopMatrix();
 
 }
-void window_door()
+void door_window()
 {
-    material_property(.79, .79, .8);
+    property_material(.79, .79, .8);
 
     //window
     glPushMatrix();
@@ -591,9 +591,9 @@ void house()
     cube_draw();
     glPopMatrix();
 
-    cala();
+    c_a_l_a();
     
-    fench();
+    f_e_n_c_h();
     glPushMatrix();
     glBegin(GL_POINT);
     glColor3f(0,1,0);
@@ -603,14 +603,14 @@ void house()
 
     glPushMatrix();
 
-    window_door();
+    door_window();
     glPopMatrix();
 }
 
 // beginning of bus design
 void wheel()
 {
-    material_property(0,0,0);
+    property_material(0,0,0);
     glPushMatrix(); //Wheel1
     glTranslatef(-1.5,1.65,.95);
     glScalef(.75,.75,0.75);
@@ -686,7 +686,7 @@ void bus()
 
 void road()
 {
-    material_property(1,1,1);
+    property_material(1,1,1);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,3);
 
@@ -728,7 +728,7 @@ void road()
 
 void playground()
 {
-    material_property(1,1,1);
+    property_material(1,1,1);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,4);
     glPushMatrix();
@@ -745,7 +745,7 @@ void banner()
 {
 
     //base
-    material_property(.75,.44,.17);
+    property_material(.75,.44,.17);
 
     glPushMatrix();
     glTranslatef(0,.25,0);
@@ -779,7 +779,7 @@ void banner()
 
 void building()
 {
-    material_property(1,1,1);
+    property_material(1,1,1);
 
     glPushMatrix();
     glTranslatef(0,7,0);
@@ -788,7 +788,7 @@ void building()
     cube_draw();
     glPopMatrix();
 
-    material_property(1,1,1);
+    property_material(1,1,1);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,6);
     glPushMatrix();
@@ -800,7 +800,7 @@ void building()
     glDisable(GL_TEXTURE_2D);
 }
 
-void building_all()
+void all_building()
 {
     for(int i =12;i<35;i=i+8)
     {
@@ -815,9 +815,9 @@ void building_all()
 }
 
 
-void building2()
+void second_building()
 {
-    material_property(1,1,1);
+    property_material(1,1,1);
 
     glPushMatrix();
     glTranslatef(0,30,0);
@@ -826,7 +826,7 @@ void building2()
     cube_draw();
     glPopMatrix();
 
-    material_property(1,1,1);
+    property_material(1,1,1);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,9);
     glPushMatrix();
@@ -838,9 +838,9 @@ void building2()
     glDisable(GL_TEXTURE_2D);
 }
 
-void building3()
+void third_building()
 {
-    material_property(1,1,1);
+    property_material(1,1,1);
 
     glPushMatrix();
     glTranslatef(0,25,0);
@@ -849,7 +849,7 @@ void building3()
     cube_draw();
     glPopMatrix();
 
-    material_property(1,1,1);
+    property_material(1,1,1);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,14);
     glPushMatrix();
@@ -862,10 +862,10 @@ void building3()
 }
 
 
-void bus_stopage()
+void busstop()
 {
     //base
-    material_property(1,1,1);
+    property_material(1,1,1);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,7);
     glPushMatrix();
@@ -876,7 +876,7 @@ void bus_stopage()
     glPopMatrix();
 
     //stand
-     material_property(1,1,1);
+     property_material(1,1,1);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,7);
     glPushMatrix();
@@ -886,7 +886,7 @@ void bus_stopage()
     cube_draw();
     glPopMatrix();
 
-     material_property(1,1,1);
+     property_material(1,1,1);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,8);
     glPushMatrix();
@@ -900,7 +900,7 @@ void bus_stopage()
 
 }
 
-void cylinder_3D(GLdouble height,GLdouble rad ,GLdouble rad_2)
+void 3D_cyl(GLdouble height,GLdouble rad ,GLdouble rad_2)
 {
 
 
@@ -912,9 +912,9 @@ void cylinder_3D(GLdouble height,GLdouble rad ,GLdouble rad_2)
     gluDeleteQuadric(qobj);
 
 }
-void tree1()
+void first_tree()
 {
-    material_property(0,.3,0);
+    property_material(0,.3,0);
     glPushMatrix();
     glTranslatef(0,8,0);
     glRotatef(-90,1,0,0);
@@ -933,31 +933,31 @@ void tree1()
     glutSolidCone(2,4,15,15);
     glPopMatrix();
 
-    material_property(.4,0.36,.31);
-    //material_property(1,1,1);
+    property_material(.4,0.36,.31);
+    //property_material(1,1,1);
 
     //glEnable(GL_TEXTURE_2D);
     //glBindTexture(GL_TEXTURE_2D,15);
     glPushMatrix();
     glTranslatef(0,15,0);
     //glRotatef(-90,1,0,0);
-    cylinder_3D(14,.5,1);
+    3D_cyl(14,.5,1);
     glPopMatrix();
 
 
 
     glDisable(GL_TEXTURE_1D);
-    //material_property(0,1,0);
+    //property_material(0,1,0);
 }
 
-void tree_all()
+void all_trees()
 {
     for(int z=3;z>-22;z=z-5)
     {
         glPushMatrix();
         glTranslatef(-18,0,z);
         glScalef(.6,1,.6);
-        tree1();
+        first_tree();
         glPopMatrix();
     }
 }
@@ -996,7 +996,7 @@ void sky()
 
     glDisable(GL_TEXTURE_2D);
 }
-long long nCr(int n, int r)
+long long en_ce_aar(int n, int r)
 {
     if(r > n / 2) r = n - r; // because C(n, r) == C(n, n - r)
     long long ans = 1;
@@ -1010,14 +1010,14 @@ long long nCr(int n, int r)
 
     return ans;
 }
-void BezierCurve ( double t,  float xy[2])
+void bezier_curve ( double t,  float xy[2])
 {
     double y=0;
     double x=0;
     t=t>1.0?1.0:t;
     for(int i=0; i<=L; i++)
     {
-        int ncr=nCr(L,i);
+        int ncr=en_ce_aar(L,i);
         double oneMinusTpow=pow(1-t,double(L-i));
         double tPow=pow(t,double(i));
         double coef=oneMinusTpow*tPow*ncr;
@@ -1030,7 +1030,7 @@ void BezierCurve ( double t,  float xy[2])
 
     //return y;
 }
-void tableBezier()
+void table_bez()
 {
     int i, j;
     float x, y, z, r;				//current coordinates
@@ -1045,7 +1045,7 @@ void tableBezier()
     float t=0;
     float dt=1.0/nt;
     float xy[2];
-    BezierCurve( t,  xy);
+    bezier_curve( t,  xy);
     x = xy[0];
     r = xy[1];
     //rotate about z-axis
@@ -1054,7 +1054,7 @@ void tableBezier()
     {
         theta = 0;
         t+=dt;
-        BezierCurve( t,  xy);
+        bezier_curve( t,  xy);
         x1 = xy[0];
         r1 = xy[1];
 
@@ -1185,12 +1185,12 @@ void chair_table()
 {
     // CURVED CHAIR TABLE PART
     glPushMatrix();
-    material_property(0.5,0.4,0.3);
+    property_material(0.5,0.4,0.3);
     glRotatef( 90, 0.0, 0.0, 1.0);
     //glRotatef( 180, 1.0, 0.0, 1.0);
     glTranslated(-22,0,0);
     glScalef(3,3,3);
-    tableBezier();
+    table_bez();
     glPopMatrix();
 
      // 1st chair
@@ -1230,7 +1230,7 @@ void chair_table()
 
 void tiles()
 {
-    material_property(1,1,1);
+    property_material(1,1,1);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,4);
     glPushMatrix();
@@ -1242,7 +1242,7 @@ void tiles()
     glDisable(GL_TEXTURE_2D);
 }
 
-void road_light()
+void the_roadlight()
 {
     // base
     glPushMatrix();
@@ -1251,7 +1251,7 @@ void road_light()
     glTranslatef(80,30,0);
     glScalef(1,30,1);
     glTranslatef(-0.5,-0.5,-0.5);
-    material_property(0.8,0.6,0.2);
+    property_material(0.8,0.6,0.2);
     cube_draw();
     glPopMatrix();
 
@@ -1260,7 +1260,7 @@ void road_light()
     glTranslatef(85,42,0);
     glScalef(10,1,1);
     glTranslatef(-0.5,-0.5,-0.5);
-    material_property(0.8,0.6,0.2);
+    property_material(0.8,0.6,0.2);
     cube_draw();
     glPopMatrix();
 
@@ -1269,7 +1269,7 @@ void road_light()
     glTranslatef(85,38,0);
     glScalef(1,7,1);
     glTranslatef(-0.5,-0.5,-0.5);
-    material_property(0.9,0.9,0.9);
+    property_material(0.9,0.9,0.9);
     cube_draw();
     glPopMatrix();
 
@@ -1278,7 +1278,7 @@ void road_light()
 
     glPushMatrix();
     glTranslatef(85,35,0);
-    material_property(1,1,1);
+    property_material(1,1,1);
     glutSolidSphere(2,16,16);
     glPopMatrix();
 
@@ -1286,7 +1286,7 @@ void road_light()
 
 }
 
-void light_function_0(float x, float y, float z)
+void the_light_function(float x, float y, float z)
 {
     // Light Specification
     GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
@@ -1321,20 +1321,20 @@ void light_function_0(float x, float y, float z)
 }
 
 
-void roadlight()
+void light_for_road()
 {
     for (int i=-20; i<=90; i=i+20)
     {
         glPushMatrix();
-        light_function_0(125,20,-i);
+        the_light_function(125,20,-i);
         glTranslatef(-45,-20,-i);
-        road_light();
+        the_roadlight();
         glPopMatrix();
     }
 }
 
 
-void grass_block22()
+void block22_grass()
 {
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,12);
@@ -1347,7 +1347,7 @@ void grass_block22()
     glDisable(GL_TEXTURE_2D);
 }
 
-void swimming_pool_block21()
+void block21_swimming_pool()
 {
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,13);
@@ -1360,14 +1360,14 @@ void swimming_pool_block21()
     glDisable(GL_TEXTURE_2D);
 }
 
-void tree_around_pool()
+void tree_pool_area()
 {
     for(int z=-25;z>-55;z-=8)
     {
         glPushMatrix();
         glTranslatef(-25,0,z);
         glScalef(.5,.8,.5);
-        tree1();
+        first_tree();
          glPopMatrix();
     }
 
@@ -1378,7 +1378,7 @@ void tree_around_pool()
         glPushMatrix();
         glTranslatef(-30,0,z);
         glScalef(.5,.8,.5);
-        tree1();
+        first_tree();
          glPopMatrix();
     }
     glPopMatrix();
@@ -1386,29 +1386,29 @@ void tree_around_pool()
     glPushMatrix();
     glTranslatef(-33,0,-25);
     glScalef(.5,.8,.5);
-    tree1();
+    first_tree();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-41,0,-25);
     glScalef(.5,.8,.5);
-    tree1();
+    first_tree();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-33,0,-49);
     glScalef(.5,.8,.5);
-    tree1();
+    first_tree();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-41,0,-49);
     glScalef(.5,.8,.5);
-    tree1();
+    first_tree();
     glPopMatrix();
 }
 
-void bus_animation()
+void animation_for_bus()
 {
     if(busx<=70)
     {
@@ -1424,7 +1424,7 @@ void bus_animation()
     glutPostRedisplay();
 
 }
-void busmove()
+void movement_bus()
 {
         glEnable(GL_TEXTURE_2D);
         glPushMatrix();
@@ -1434,17 +1434,17 @@ void busmove()
         if (bus_switch)
         {
 
-            bus_animation();
+            animation_for_bus();
         }
 
         glPopMatrix();
 }
 
-void sun_moon()
+void moon_sun()
 {
 
     // moon 1
-    material_property(.97,0.16,0.05);
+    property_material(.97,0.16,0.05);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,15);
 
@@ -1465,7 +1465,7 @@ void park()
     glTranslatef(160,30,-60);
     glScalef(2,30,2);
     glTranslatef(-0.5,-0.5,-0.5);
-    material_property(.78,.46,.29);
+    property_material(.78,.46,.29);
     cube_draw();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
@@ -1479,13 +1479,13 @@ void park()
     glTranslatef(160,50,-60);
     glScalef(8,12,8);
     glTranslatef(-0.5,-0.5,-0.5);
-     material_property(1,1,1);
+     property_material(1,1,1);
     cube_draw();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 }
 
-void park_with_tree()
+void park_having_tree()
 {
     // park tree 1
     for (int i=10; i<=100; i+=20)
@@ -1528,7 +1528,7 @@ void park_with_tree()
 
 }
 
-void parking_zone()
+void bus_park_area()
 {
 
     glEnable(GL_TEXTURE_2D);
@@ -1593,11 +1593,11 @@ void display(void)
     banner();
     glPopMatrix();
     //trees();
-    building_all();
+    all_building();
 
     glPushMatrix();
     glTranslatef(25,0,2.5);
-    bus_stopage();
+    busstop();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
     glPushMatrix();
@@ -1609,11 +1609,11 @@ void display(void)
     glPushMatrix();
     glTranslatef(4.5,0,4.5);
     //glScalef(.5,.5,.5);
-    //turbine();
+    //windmill();
     glPopMatrix();
 
     glPushMatrix();
-    tree_all();
+    all_trees();
     glPopMatrix();
     glPushMatrix();
     glTranslatef(-38,0,-8);
@@ -1624,24 +1624,24 @@ void display(void)
     //building block 2
     glPushMatrix();
     glTranslatef(-28,0,3);
-    building2();
+    second_building();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-48,0,3);
-    building2();
+    second_building();
     glPopMatrix();
 
     glPushMatrix();
         glTranslatef(0,0,-22);
         glPushMatrix();
         glTranslatef(-28,0,3);
-        building2();
+        second_building();
         glPopMatrix();
 
         glPushMatrix();
         glTranslatef(-48,0,3);
-        building2();
+        second_building();
         glPopMatrix();
     glPopMatrix();
     // building block 2 end
@@ -1660,47 +1660,47 @@ void display(void)
     tiles();
     glPopMatrix();
 
-    roadlight();
+    light_for_road();
 
     glPushMatrix();
     glTranslatef(-8,0,-38);
     glScalef(.9,1,.9);
-    grass_block22();
+    block22_grass();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-38,0,-38);
     glScalef(.8,1,.8);
-    swimming_pool_block21();
+    block21_swimming_pool();
     glPopMatrix();
 
-    tree_around_pool();
+    tree_pool_area();
 
     // building block 3
     glPushMatrix();
     glTranslatef(2,0,-49);
-    building3();
+    third_building();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-18,0,-49);
-    building3();
+    third_building();
     glPopMatrix();
 
 
-    busmove();
+    movement_bus();
 
-    sun_moon();
+    moon_sun();
 
     glPushMatrix();
     glTranslatef(-25,0,15);
     glScalef(.4,.4,.4);
-    park_with_tree();
+    park_having_tree();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-6,0,-13);
-    parking_zone();
+    bus_park_area();
     glPopMatrix();
 
     glEnable(GL_TEXTURE_2D);
@@ -1718,14 +1718,14 @@ void display(void)
     glPopMatrix();
 
     glPushMatrix();
-    material_property(.78,.47,.29);
+    property_material(.78,.47,.29);
     glTranslatef(21,3,-10);
     glScalef(1,.2,1);
     glutSolidSphere(3,15,20);
     glPopMatrix();
 
     glPushMatrix();
-    material_property(.9,.9,.9);
+    property_material(.9,.9,.9);
     glTranslatef(21,4.6,-10);
 
     glutSolidTeapot(1);
@@ -1734,25 +1734,25 @@ void display(void)
      glPushMatrix();
     glTranslatef(22,0,-38);
     glScalef(.9,1,.9);
-    grass_block22();
+    block22_grass();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(22,0,-44);
     glScalef(3,3,3);
-    turbine();
+    windmill();
     glPopMatrix();
 
         glPushMatrix();
     glTranslatef(22,0,-38);
     glScalef(3,3,3);
-    turbine();
+    windmill();
     glPopMatrix();
 
         glPushMatrix();
     glTranslatef(22,0,-32);
     glScalef(3,3,3);
-    turbine();
+    windmill();
     glPopMatrix();
 
     //sea();
@@ -1762,7 +1762,7 @@ void display(void)
 
 
 }
-void Pitch_y1(){
+void y1_pitch(){
     GLfloat ty, tz;
 
     ty = lookaty - Eyey;
@@ -1775,7 +1775,7 @@ void Pitch_y1(){
     lookatz = dz + Eyez;
 
 }
-void Pitch_y2(){
+void y2_pitch(){
     GLfloat ty, tz;
 
     ty = lookaty - Eyey;
@@ -1789,7 +1789,7 @@ void Pitch_y2(){
 
 }
 
-void myKeyboardFunc( unsigned char key, int x, int y )
+void keyboard_func( unsigned char key, int x, int y )
 {
     switch ( key )
     {
@@ -1886,10 +1886,10 @@ void myKeyboardFunc( unsigned char key, int x, int y )
         break;
     // Rotation around the y-axis for 2 and 8
     case '2':
-        Pitch_y2();
+        y2_pitch();
         break;
     case '8':
-        Pitch_y1();
+        y1_pitch();
         break;
     // Rotation around the z-axis for 4 and 6
     case '4':
@@ -1915,13 +1915,13 @@ void myKeyboardFunc( unsigned char key, int x, int y )
         break;
     case 't':
 
-        turbine_rotate=!turbine_rotate;
+        windmill_rotate=!windmill_rotate;
         break;
     case 'f':
-        speed_turbine+=0.1;
+        speed_windmill+=0.1;
         break;
     case 'l':
-        speed_turbine-=0.1;
+        speed_windmill-=0.1;
         break;
     // ariel eye view
     case 'b':
@@ -1951,7 +1951,7 @@ void myKeyboardFunc( unsigned char key, int x, int y )
     glutPostRedisplay();
 }
 
-void Specialkey(int key, int x, int y)
+void key_special(int key, int x, int y)
 {
     switch(key)
     {
@@ -2012,7 +2012,7 @@ void Specialkey(int key, int x, int y)
 
 
 
-void animate()
+void the_animation()
 {
     if (xRotate == true)
     {
@@ -2066,11 +2066,11 @@ void animate()
         Eyez=Eyez;
     }
 
-    if(turbine_rotate==true)
+    if(windmill_rotate==true)
     {
-        turbine_theta += speed_turbine;
-        if(turbine_theta > 360.0)
-            turbine_theta -= 360.0*floor(turbine_theta/360.0);
+        windmill_theta += speed_windmill;
+        if(windmill_theta > 360.0)
+            windmill_theta -= 360.0*floor(windmill_theta/360.0);
     }
 
 
@@ -2081,7 +2081,7 @@ void animate()
 
 }
 
-void LoadTexture(const char*filename, int rep = 1)
+void texture_load(const char*filename, int rep = 1)
 {
     glGenTextures(1, &ID);
     glBindTexture(GL_TEXTURE_2D, ID);
@@ -2146,36 +2146,36 @@ void instruction()
 
     cout<<"----------------bus and terbine control--------------------"<<endl;
 
-    cout << "Press 't' to start the turbine" << endl;
-    cout << "Press 'f' to speed up the turbine" << endl;
-    cout << "Press 'l' to speed down the turbine" << endl;
+    cout << "Press 't' to start the windmill" << endl;
+    cout << "Press 'f' to speed up the windmill" << endl;
+    cout << "Press 'l' to speed down the windmill" << endl;
 
     cout << "Press 'm' to move or run the bus" << endl;
 
 }
 
-void call_all_texture()
+void texture_call()
 {
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus7.bmp",1);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus7.bmp",2);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\road.bmp",3);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\grass3.bmp",4);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\signboard4.bmp",5);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building8.bmp",6);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick3.bmp",7);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\roof.bmp",8);
-    /* LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus_top.bmp",9); */
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building7.bmp",9);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sky.bmp",10);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick4.bmp",11);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\grass.bmp",12);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water1.bmp",13);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building5.bmp",14);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\wood3.bmp",15);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sun3.bmp",16);
-     LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\leaf3.bmp",17);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\parking_lot.bmp",18);
-    LoadTexture("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water2.bmp",19);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus7.bmp",1);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus7.bmp",2);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\road.bmp",3);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\grass3.bmp",4);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\signboard4.bmp",5);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building8.bmp",6);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick3.bmp",7);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\roof.bmp",8);
+    /* texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\bus_top.bmp",9); */
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building7.bmp",9);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sky.bmp",10);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\brick4.bmp",11);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\grass.bmp",12);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water1.bmp",13);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\building5.bmp",14);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\wood3.bmp",15);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\sun3.bmp",16);
+     texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\leaf3.bmp",17);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\parking_lot.bmp",18);
+    texture_load("H:\\4th year 2nd term\\CSE 4208 Computer Graphics Lab\\project\\Texture\\images\\water2.bmp",19);
 }
 
 
@@ -2194,11 +2194,11 @@ int main (int argc, char **argv)
     light();
     glEnable(GL_BLEND);
     glEnable(GL_CULL_FACE);
-    glutKeyboardFunc(myKeyboardFunc);
-    glutSpecialFunc(Specialkey);
-    call_all_texture();
+    glutKeyboardFunc(keyboard_func);
+    glutSpecialFunc(key_special);
+    texture_call();
     glutDisplayFunc(display);
-    glutIdleFunc(animate);
+    glutIdleFunc(the_animation);
     instruction();
     glutMainLoop();
 
