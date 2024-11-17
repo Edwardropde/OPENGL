@@ -2,36 +2,36 @@
 #include<stdio.h>
 #include <iostream>
 
-BmpLoader::BmpLoader(const char* filename)
+BmpLoader::BmpLoader(const char* fname)
 {
-    FILE *file=0;
-    file=fopen(filename, "rb");
-    if(!file)
+    FILE *fl=0;
+    fl=fopen(fname, "rb");
+    if(!fl)
         std::cout<<"File not found"<<std::endl;
-    fread(&bfh, sizeof(BITMAPFILEHEADER),1,file);
+    fread(&bfh, sizeof(BITMAPFILEHEADER),1,fl);
     if(bfh.bfType != 0x4D42)
         std::cout<<"Not a valid bitmap"<<std::endl;
-    fread(&bih, sizeof(BITMAPINFOHEADER),1,file);
+    fread(&bih, sizeof(BITMAPINFOHEADER),1,fl);
     if(bih.biSizeImage==0)
         bih.biSizeImage=bih.biHeight*bih.biWidth*3;
-    textureData = new unsigned char[bih.biSizeImage];
-    fseek(file, bfh.bfOffBits, SEEK_SET);
-    fread(textureData, 1, bih.biSizeImage, file);
+    datatexture = new unsigned char[bih.biSizeImage];
+    fseek(fl, bfh.bfOffBits, SEEK_SET);
+    fread(datatexture, 1, bih.biSizeImage, fl);
     unsigned char temp;
     for(int i=0; i<bih.biSizeImage; i+=3)
     {
-        temp = textureData[i];
-        textureData[i] = textureData[i+2];
-        textureData[i+2] = temp;
+        temp = datatexture[i];
+        datatexture[i] = datatexture[i+2];
+        datatexture[i+2] = temp;
 
     }
 
     iWidth = bih.biWidth;
     iHeight = bih.biHeight;
-    fclose(file);
+    fclose(fl);
 }
 
 BmpLoader::~BmpLoader()
 {
-    delete [] textureData;
+    delete [] datatexture;
 }
